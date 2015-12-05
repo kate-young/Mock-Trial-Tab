@@ -4,8 +4,8 @@ public class Team {
 	private final School school;
 	private static int count = 0;
 	private final int id;
-	private int wins = 0;
-	private int losses = 0;
+	private double wins = 0;
+	private double losses = 0;
 	
 	public Team(int id, School school) {
 		this.id = id;
@@ -21,16 +21,20 @@ public class Team {
 	public School getSchool() {
 		return school;
 	}
-	public int getWins() {
+	public double getWins() {
 		return wins;
 	}
-	public int getLoses() {
+	public double getLoses() {
 		return losses;
 	}
 	public void win() {
-		this.wins++;
+		wins += 1;
 	}
 	public void lose() {
-		this.losses++;
+		losses += 1;
+	}
+	public void tie() {
+		wins += 0.5;
+		losses += 0.5;
 	}
 }

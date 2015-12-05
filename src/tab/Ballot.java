@@ -2,7 +2,9 @@ package tab;
 
 public class Ballot {
 	private final ScoringJudge judge;
-	private final Round round;
+	private int prosecutionScore;
+	private int defenseScore;
+	private Round round;
 	
 	public Ballot(ScoringJudge judge, Round round) {
 		this.judge = judge;
@@ -13,7 +15,28 @@ public class Ballot {
 		return judge;
 	}
 
-	public Round getRound() {
-		return round;
+	public int getProsecutionScore() {
+		return prosecutionScore;
+	}
+
+	public int getDefenseScore() {
+		return defenseScore;
+	}
+
+	public void score(int prosecutionScore, int defenseScore) {
+		this.defenseScore = defenseScore;
+		this.prosecutionScore = prosecutionScore;
+		Team defense = this.round.getDefenseTeam();
+		Team prosecution = this.round.getProsecutionTeam();
+		if(prosecutionScore > defenseScore) {
+			prosecution.win();
+			defense.lose();
+		} else if (defenseScore > prosecutionScore) {
+			prosecution.lose();
+			defense.win();
+		} else {
+			prosecution.tie();
+			defense.tie();
+		}
 	}
 }
