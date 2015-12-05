@@ -2,12 +2,13 @@ package tab;
 
 public class Team {
 	private final School school;
-	private static final int count = 0;
+	private static int count = 0;
 	private final int id;
 	
 	public Team(int id, School school) {
 		this.id = id;
 		this.school = school;
+		count++;
 	}
 	public int getId() {
 		return id;
