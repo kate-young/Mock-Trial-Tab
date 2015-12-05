@@ -28,4 +28,8 @@ public class Judge {
 	public String getLastName() {
 		return lastName;
 	}
+	
+	public String getName() {
+		return lastName + ", " + firstName;
+	}
 }
