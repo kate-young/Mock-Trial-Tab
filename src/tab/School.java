@@ -11,6 +11,10 @@ public class School {
 		this.id = ++count;
 		this.setName(name);
 	}
+	public School(School other) {
+		this.id = other.id;
+		this.setName(other.name);
+	}
 	public String getName() {
 		return name;
 	}
