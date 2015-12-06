@@ -34,26 +34,26 @@ public class BallotTest {
 		setUpRound();
 		ballot.score(130, 110);
 		assertEquals(1, prosTeam.getWins(), .001);
-		assertEquals(0, prosTeam.getLoses(), .001);
+		assertEquals(0, prosTeam.getLosses(), .001);
 		assertEquals(0, defTeam.getWins(), .001);
-		assertEquals(1, defTeam.getLoses(), .001);		
+		assertEquals(1, defTeam.getLosses(), .001);		
 	}
 	@Test
 	public void testDefenseWin() {
 		setUpRound();
 		ballot.score(120, 135);
 		assertEquals(0, prosTeam.getWins(), .001);
-		assertEquals(1, prosTeam.getLoses(), .001);
+		assertEquals(1, prosTeam.getLosses(), .001);
 		assertEquals(1, defTeam.getWins(), .001);
-		assertEquals(0, defTeam.getLoses(), .001);
+		assertEquals(0, defTeam.getLosses(), .001);
 	}
 	@Test
 	public void testTie() {
 		setUpRound();
 		ballot.score(120, 120);
 		assertEquals(.5, prosTeam.getWins(), .001);
-		assertEquals(.5, prosTeam.getLoses(), .001);
+		assertEquals(.5, prosTeam.getLosses(), .001);
 		assertEquals(.5, defTeam.getWins(), .001);
-		assertEquals(.5, defTeam.getLoses(), .001);
+		assertEquals(.5, defTeam.getLosses(), .001);
 	}
 }
