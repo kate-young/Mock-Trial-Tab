@@ -24,7 +24,7 @@ public class Team {
 	public double getWins() {
 		return wins;
 	}
-	public double getLoses() {
+	public double getLosses() {
 		return losses;
 	}
 	public void win() {
