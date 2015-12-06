@@ -24,6 +24,7 @@ public class Ballot {
 	}
 
 	public void score(int prosecutionScore, int defenseScore) {
+		this.updateJudgeConflicts();
 		this.defenseScore = defenseScore;
 		this.prosecutionScore = prosecutionScore;
 		Team defense = this.round.getDefenseTeam();
@@ -38,5 +39,9 @@ public class Ballot {
 			prosecution.tie();
 			defense.tie();
 		}
+	}
+	private void updateJudgeConflicts() {
+		judge.addConflict(round.getProsecutionTeam());
+		judge.addConflict(round.getDefenseTeam());
 	}
 }
