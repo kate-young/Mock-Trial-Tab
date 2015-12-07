@@ -29,6 +29,15 @@ public class BallotTest {
 		this.ballot = new Ballot(judge, round);
 	}
 	@Test
+	public void testAllLoss() {
+		setUpRound();
+		ballot.score(0,  0);
+		assertEquals(0, prosTeam.getWins(), .001);
+		assertEquals(1, prosTeam.getLosses(), .001);
+		assertEquals(0, defTeam.getWins(), .001);
+		assertEquals(1, defTeam.getLosses(), .001);	
+	}
+	@Test
 	public void testProsecutionWin() {
 		setUpRound();
 		ballot.score(130, 110);
