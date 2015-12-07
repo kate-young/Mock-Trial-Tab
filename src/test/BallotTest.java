@@ -20,8 +20,8 @@ public class BallotTest {
 	private ScoringJudge judge;
 	
 	public void setUpRound() {
-		this.school1 = new School("school1");
-		this.school2 = new School("school2");
+		this.school1 = new School("school1", "kangaroos");
+		this.school2 = new School("school2", "jayhawks");
 		this.prosTeam = new Team(1234, school1);
 		this.defTeam = new Team(5678, school2);
 		this.judge = new ScoringJudge("judge", "test");
