@@ -33,4 +33,11 @@ public class Round {
 	public ArrayList<Judge> getJudges() {
 		return judges;
 	}
+	
+	public void end() {
+		for(Judge judge : judges) {
+			judge.addConflict(prosecutionTeam);
+			judge.addConflict(defenseTeam);
+		}
+	}
 }

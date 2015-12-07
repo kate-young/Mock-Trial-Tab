@@ -36,6 +36,20 @@ public class RoundTest {
 		this.judge3 = new Judge("judge3", "test");
 		this.round = new Round(prosTeam, defTeam);
 	}
+	
+	@Test
+	public void testConflictsAddedToJudges() {
+		setUpRound();
+		try {
+			round.assignJudge(judge1);
+			round.assignJudge(judge2);
+		} catch (Exception e) {
+			fail("Judge Assignment Failed: " + e.getMessage());
+		}
+		round.end();
+		assertTrue(judge1.getConflicts().contains(prosTeam));
+		assertTrue(judge2.getConflicts().contains(defTeam));
+	}
 	@Test
 	public void testCorrectJudgeAssignment() {
 		
@@ -55,6 +69,7 @@ public class RoundTest {
 	@Test
 	public void testJudgeAssignmentWithConflict() {
 		setUpRound();
+		round.end();
 		Round round2 = new Round(prosTeam, defTeam);
 		try {
 			round.assignJudge(judge1);
