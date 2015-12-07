@@ -9,8 +9,8 @@ public class Tournament {
 	
 	public Tournament() {
 		this.rounds = new Round[4];
-		for( Round round : rounds) {
-			round = new Round();
+		for(int i = 0; i < 4; i++) {
+			rounds[i] = new Round();
 		}
 	}
 	
@@ -28,5 +28,8 @@ public class Tournament {
 	}
 	public Round[] getRounds() {
 		return rounds;
+	}
+	public Round getRound(int index) {
+		return rounds[index];
 	}
 }
