@@ -53,7 +53,7 @@ public class RoundTest {
 	}
 	
 	@Test
-	public void testIncorrectJudgeAssignment() {
+	public void testJudgeAssignmentWithConflict() {
 		setUpRound();
 		Round round2 = new Round(prosTeam, defTeam);
 		try {

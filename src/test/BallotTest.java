@@ -55,12 +55,4 @@ public class BallotTest {
 		assertEquals(.5, defTeam.getWins(), .001);
 		assertEquals(.5, defTeam.getLosses(), .001);
 	}
-	@Test
-	public void testJudgeConflicts() {
-		setUpRound();
-		ballot.score(130, 125);
-		assertEquals(2, judge.getConflicts().size());
-		assertTrue(judge.getConflicts().contains(prosTeam));
-		assertTrue(judge.getConflicts().contains(defTeam));
-	}
 }

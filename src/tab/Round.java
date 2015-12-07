@@ -23,9 +23,9 @@ public class Round {
 	
 	public void assignJudge(Judge judge) throws Exception {
 		if(judge.getConflicts().contains(defenseTeam)) {
-			throw new Exception("Judge has conflict with " + defenseTeam.getId());
+			throw new Exception("Judge has conflict with " + defenseTeam);
 		} else if (judge.getConflicts().contains(prosecutionTeam)) {
-			throw new Exception("Judge has conflict with " + prosecutionTeam.getId());
+			throw new Exception("Judge has conflict with " + prosecutionTeam);
 		}
 		judges.add(judge);
 	}

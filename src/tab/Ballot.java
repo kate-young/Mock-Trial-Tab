@@ -5,6 +5,7 @@ public class Ballot {
 	private int prosecutionScore;
 	private int defenseScore;
 	private Round round;
+	private static final int ALL_LOSS_SCORE = 0;
 	
 	public Ballot(ScoringJudge judge, Round round) {
 		this.judge = judge;
@@ -24,12 +25,14 @@ public class Ballot {
 	}
 
 	public void score(int prosecutionScore, int defenseScore) {
-		this.updateJudgeConflicts();
 		this.defenseScore = defenseScore;
 		this.prosecutionScore = prosecutionScore;
 		Team defense = this.round.getDefenseTeam();
 		Team prosecution = this.round.getProsecutionTeam();
-		if(prosecutionScore > defenseScore) {
+		if(prosecutionScore == ALL_LOSS_SCORE && defenseScore == ALL_LOSS_SCORE) {
+			prosecution.lose();
+			defense.lose();
+		} else if(prosecutionScore > defenseScore) {
 			prosecution.win();
 			defense.lose();
 		} else if (defenseScore > prosecutionScore) {
@@ -39,9 +42,5 @@ public class Ballot {
 			prosecution.tie();
 			defense.tie();
 		}
-	}
-	private void updateJudgeConflicts() {
-		judge.addConflict(round.getProsecutionTeam());
-		judge.addConflict(round.getDefenseTeam());
 	}
 }
