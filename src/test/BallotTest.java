@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import tab.Ballot;
-import tab.Round;
+import tab.Trial;
 import tab.School;
 import tab.ScoringJudge;
 import tab.Team;
@@ -15,7 +15,7 @@ public class BallotTest {
 	private School school2;
 	private Team prosTeam;
 	private Team defTeam;
-	private Round round;
+	private Trial round;
 	private Ballot ballot;
 	private ScoringJudge judge;
 	
@@ -25,7 +25,7 @@ public class BallotTest {
 		this.prosTeam = new Team(1234, school1);
 		this.defTeam = new Team(5678, school2);
 		this.judge = new ScoringJudge("judge", "test");
-		this.round = new Round(prosTeam, defTeam);
+		this.round = new Trial(prosTeam, defTeam);
 		this.ballot = new Ballot(judge, round);
 	}
 	@Test

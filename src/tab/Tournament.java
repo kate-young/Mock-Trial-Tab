@@ -5,9 +5,14 @@ import java.util.ArrayList;
 public class Tournament {
 	private ArrayList<School> schools;
 	private ArrayList<Team> teams;
-	private ArrayList<Judge> judges;
+	private Round[] rounds;
 	
-	public Tournament() {}
+	public Tournament() {
+		this.rounds = new Round[4];
+		for( Round round : rounds) {
+			round = new Round();
+		}
+	}
 	
 	public void addSchool(School school) {
 		schools.add(school);
@@ -21,10 +26,7 @@ public class Tournament {
 	public ArrayList<Team> getTeams() {
 		return teams;
 	}
-	public void addJudge(Judge judge) {
-		judges.add(judge);
-	}
-	public ArrayList<Judge> getJudges() {
-		return judges;
+	public Round[] getRounds() {
+		return rounds;
 	}
 }

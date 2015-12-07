@@ -3,41 +3,37 @@ package tab;
 import java.util.ArrayList;
 
 public class Round {
-	private final Team prosecutionTeam;
-	private final Team defenseTeam;
-	private final ArrayList<Judge> judges;
+	private ArrayList<Trial> trials;
+	private ArrayList<Judge> availableJudges;
 	
-	public Round(Team prosecutionTeam, Team defenseTeam) {
-		this.prosecutionTeam = prosecutionTeam;
-		this.defenseTeam = defenseTeam;
-		this.judges = new ArrayList<Judge>();
-	}
-
-	public Team getProsecutionTeam() {
-		return prosecutionTeam;
-	}
-
-	public Team getDefenseTeam() {
-		return defenseTeam;
+	public Round() { 
+		trials = new ArrayList<Trial>();
+		availableJudges = new ArrayList<Judge>();
 	}
 	
-	public void assignJudge(Judge judge) throws Exception {
-		if(judge.getConflicts().contains(defenseTeam)) {
-			throw new Exception("Judge has conflict with " + defenseTeam);
-		} else if (judge.getConflicts().contains(prosecutionTeam)) {
-			throw new Exception("Judge has conflict with " + prosecutionTeam);
+	public Round(ArrayList<Trial> trials) {
+		this.trials = trials;
+		this.availableJudges = new ArrayList<Judge>();
+	}
+	
+	public Round(ArrayList<Trial> trials, ArrayList<Judge> availableJudges) {
+		this.trials = trials;
+		this.availableJudges = availableJudges;
+	}
+	
+	public void addJudge(Judge judge) {
+		availableJudges.add(judge);
+	}
+	
+	public void addTrial(Trial trial) {
+		trials.add(trial);
+	}
+	
+	public boolean isComplete() {
+		for( Trial trial : trials) {
+			if (!trial.isComplete()) 
+				return false;
 		}
-		judges.add(judge);
-	}
-	
-	public ArrayList<Judge> getJudges() {
-		return judges;
-	}
-	
-	public void end() {
-		for(Judge judge : judges) {
-			judge.addConflict(prosecutionTeam);
-			judge.addConflict(defenseTeam);
-		}
+		return true;
 	}
 }

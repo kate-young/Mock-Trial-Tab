@@ -4,12 +4,12 @@ public class Ballot {
 	private final ScoringJudge judge;
 	private int prosecutionScore;
 	private int defenseScore;
-	private Round round;
+	private Trial trial;
 	private static final int ALL_LOSS_SCORE = 0;
 	
-	public Ballot(ScoringJudge judge, Round round) {
+	public Ballot(ScoringJudge judge, Trial trial) {
 		this.judge = judge;
-		this.round = round;
+		this.trial = trial;
 	}
 
 	public Judge getJudge() {
@@ -27,8 +27,8 @@ public class Ballot {
 	public void score(int prosecutionScore, int defenseScore) {
 		this.defenseScore = defenseScore;
 		this.prosecutionScore = prosecutionScore;
-		Team defense = this.round.getDefenseTeam();
-		Team prosecution = this.round.getProsecutionTeam();
+		Team defense = this.trial.getDefenseTeam();
+		Team prosecution = this.trial.getProsecutionTeam();
 		if(prosecutionScore == ALL_LOSS_SCORE && defenseScore == ALL_LOSS_SCORE) {
 			prosecution.lose();
 			defense.lose();
