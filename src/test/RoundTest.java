@@ -58,4 +58,11 @@ public class RoundTest {
 		trial1.end();
 		assertFalse(round.isComplete());
 	}
+	
+	@Test
+	public void testAllLossTime() {
+		setUpTrials();
+		round.start();
+		assertEquals(round.getStartMillis() + 10800000, round.getAllLossTimeMillis());
+	}
 }

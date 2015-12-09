@@ -1,10 +1,13 @@
 package tab;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Round {
 	private ArrayList<Trial> trials;
 	private ArrayList<Judge> availableJudges;
+	private long start; 								// Start time in milliseconds
+	private static final long ALL_LOSS_TIME = 10800000;	// 3 hours in milliseconds
 	
 	public Round() { 
 		trials = new ArrayList<Trial>();
@@ -35,5 +38,25 @@ public class Round {
 				return false;
 		}
 		return true;
+	}
+
+	public Date getStart() {
+		return new Date(start);
+	}
+	
+	public long getStartMillis() {
+		return start;
+	}
+
+	public void start() {
+		this.start = System.currentTimeMillis();
+	}
+	
+	public Date getAllLossTime() {
+		return new Date(start + ALL_LOSS_TIME);
+	}
+	
+	public long getAllLossTimeMillis() {
+		return start + ALL_LOSS_TIME;
 	}
 }
