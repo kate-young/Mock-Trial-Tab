@@ -28,10 +28,11 @@ public class Team {
 	}
 	/**
 	 * @param team
+	 * @throws ConflictException 
 	 */
-	public void addToTeamsHit(Team team) {
+	public void addToTeamsHit(Team team) throws ConflictException {
 		if(team == null) throw new IllegalArgumentException("team cannot be null");
-		if(team == this) throw new IllegalArgumentException("team cannot hit itself");
+		if(team == this) throw new ConflictException("team cannot hit itself", team, team);
 		teamsHit.add(team);
 	}
 	/**

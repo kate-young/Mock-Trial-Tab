@@ -8,6 +8,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import tab.ConflictException;
 import tab.Round;
 import tab.School;
 import tab.Team;
@@ -36,8 +37,12 @@ public class RoundTest {
 		this.defTeam1 = new Team(5678, school2);
 		this.prosTeam2 = new Team(9101, school1);
 		this.defTeam2 = new Team(1213, school2);
-		this.trial1 = new Trial(prosTeam1, defTeam1);
-		this.trial2 = new Trial(prosTeam2, defTeam2);
+		try {
+			this.trial1 = new Trial(prosTeam1, defTeam1);
+			this.trial2 = new Trial(prosTeam2, defTeam2);
+		} catch (ConflictException e) {
+			fail(e.getMessage());
+		}
 		this.trials = new ArrayList<Trial>();
 		trials.add(trial1);
 		trials.add(trial2);

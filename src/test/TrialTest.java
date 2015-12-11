@@ -6,6 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import tab.ConflictException;
 import tab.Judge;
 import tab.Trial;
 import tab.School;
@@ -34,36 +35,41 @@ public class TrialTest {
 		this.judge1 = new ScoringJudge("judge1", "test");
 		this.judge2 = new ScoringJudge("judge2", "test");
 		this.judge3 = new Judge("judge3", "test");
-		this.trial = new Trial(prosTeam, defTeam);
-	}
-	@Test
-	public void testTeamConflictsFromPreviousTrial() {
-		setUpTrial();
 		try {
-			new Trial(prosTeam, defTeam);
-		} catch (IllegalArgumentException e) {
-			thrown.expect(IllegalArgumentException.class);
+			this.trial = new Trial(prosTeam, defTeam);
+		} catch (ConflictException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	@Test
-	public void testTeamConflictsSameTeam() {
+	public void testTeamConflictsFromPreviousTrial() throws ConflictException {
+		setUpTrial();
+		try {
+			new Trial(prosTeam, defTeam);
+		} catch(ConflictException e) {
+			thrown.expect(ConflictException.class);
+		}
+	}
+	@Test
+	public void testTeamConflictsSameTeam() throws ConflictException {
 		School school = new School("MU", "tigers");
 		Team team1 = new Team(1111, school);
 		Team team2 = new Team(2222, school);
 		try {
 			new Trial(team1, team2);
-		} catch (IllegalArgumentException e) {
-			thrown.expect(IllegalArgumentException.class);
+		} catch(ConflictException e) {
+			thrown.expect(ConflictException.class);
 		}
 	}
-	@Test public void testTeamConflictsSameSchool() {
+	@Test public void testTeamConflictsSameSchool() throws ConflictException {
 		School school = new School("WashU", "Bears");
 		Team team1 = new Team(3333, school);
 		Team team2 = new Team(4444, school);
 		try {
 			new Trial(team1, team2);
-		} catch(IllegalArgumentException e) {
-			thrown.expect(IllegalArgumentException.class);
+		} catch(ConflictException e) {
+			thrown.expect(ConflictException.class);
 		}
 	}
 	
@@ -97,7 +103,7 @@ public class TrialTest {
 	}
 	
 	@Test
-	public void testJudgeAssignmentWithConflict() {
+	public void testJudgeAssignmentWithConflict() throws ConflictException {
 		setUpTrial();
 		trial.end();
 		Team prosTeam2 = new Team(1111,school1);
@@ -105,13 +111,13 @@ public class TrialTest {
 		Trial trial2 = new Trial(prosTeam2, defTeam2);
 		try {
 			trial.assignJudge(judge1);
-		} catch (IllegalArgumentException e) {
+		} catch (Exception e) {
 			fail("Initial Judge Assignment Failed: " + e.getMessage());
 		}
 		try {
 			trial2.assignJudge(judge1);
-		} catch(IllegalArgumentException e) {
-			thrown.expect(IllegalArgumentException.class);
+		} catch(ConflictException e) {
+			thrown.expect(ConflictException.class);
 		}
 	}
 	@Test

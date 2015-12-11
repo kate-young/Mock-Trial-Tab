@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import tab.Ballot;
+import tab.ConflictException;
 import tab.Judge;
 import tab.School;
 import tab.ScoringJudge;
@@ -29,7 +30,11 @@ public class TeamTest {
 	private void setUpTrial() {
 		judges.add(judge1);
 		judges.add(judge2);
-		trial = new Trial(kuA, umkcA);
+		try {
+			trial = new Trial(kuA, umkcA);
+		} catch (ConflictException e) {
+			fail(e.getMessage());
+		}
 		ballot1 = new Ballot(judge1, trial);
 		ballot2 = new Ballot(judge2, trial);
 		trial.end();
