@@ -8,6 +8,9 @@ public class Team {
 	private double losses = 0;
 	
 	public Team(int id, School school) {
+		if(school == null) {
+			throw new IllegalArgumentException("school cannot be null");
+		}
 		this.id = id;
 		this.school = school;
 		count++;
