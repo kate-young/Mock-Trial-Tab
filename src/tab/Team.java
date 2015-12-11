@@ -2,6 +2,11 @@ package tab;
 
 import java.util.ArrayList;
 
+/**
+ * Teams attending a tournament. Tracks the number of wins, losses, and other teams hit
+ * at a tournament.
+ *
+ */
 public class Team {
 	private final School school;
 	private static int count = 0;
@@ -10,22 +15,23 @@ public class Team {
 	private double losses = 0;
 	private ArrayList<Team> teamsHit;
 	
+	/**
+	 * @param id
+	 * @param school
+	 */
 	public Team(int id, School school) {
-		if(school == null) {
-			throw new IllegalArgumentException("school cannot be null");
-		}
+		if(school == null) throw new IllegalArgumentException("school cannot be null");
 		this.id = id;
 		this.school = school;
 		this.teamsHit = new ArrayList<Team>();
 		count++;
 	}
+	/**
+	 * @param team
+	 */
 	public void addToTeamsHit(Team team) {
-		if(team == null) {
-			throw new IllegalArgumentException("team cannot be null");
-		}
-		if(team == this) {
-			throw new IllegalArgumentException("team cannot hit itself");
-		}
+		if(team == null) throw new IllegalArgumentException("team cannot be null");
+		if(team == this) throw new IllegalArgumentException("team cannot hit itself");
 		teamsHit.add(team);
 	}
 	/**
@@ -38,6 +44,9 @@ public class Team {
 				|| other.getTeamsHit().contains(this) 
 				|| teamsHit.contains(other);
 	}
+	/**
+	 * @return list of teams that this team has already been in trial with this tournament
+	 */
 	public ArrayList<Team> getTeamsHit() {
 		return teamsHit;
 	}
