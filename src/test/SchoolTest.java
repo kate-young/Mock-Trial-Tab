@@ -12,7 +12,6 @@ public class SchoolTest {
 	public void autoIncrementSchoolId() {
 		School school1 = new School("UMKC", "kangaroos");
 		School school2 = new School("KU", "jayhawks");
-		assertEquals(1, school1.getId());
-		assertEquals(2, school2.getId());
+		assertEquals(school1.getId() + 1, school2.getId());
 	}
 }
