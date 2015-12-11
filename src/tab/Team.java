@@ -28,9 +28,23 @@ public class Team {
 		}
 		teamsHit.add(team);
 	}
+	/**
+	 * @param other - Team to check conflicts for
+	 * @return true if both teams are from the same school or if they have already hit
+	 */
+	public boolean hasConflict(Team other) {
+		return other.equals(this)
+				|| other.equals(this.getSchool()) 
+				|| other.getTeamsHit().contains(this) 
+				|| teamsHit.contains(other);
+	}
 	public ArrayList<Team> getTeamsHit() {
 		return teamsHit;
 	}
+	/**
+	 * @return sum of the number of wins for all other teams that this team has hit. This will
+	 * be used for determining rankings at the end of the tournament.
+	 */
 	public double getCombinedStrength() {
 		double sum = 0;
 		for(Team team: teamsHit) {

@@ -9,11 +9,8 @@ public class Trial {
 	private boolean complete = false;
 	
 	public Trial(Team prosecutionTeam, Team defenseTeam) {
-		if(prosecutionTeam == null) {
-			throw new IllegalArgumentException("Prosecution team cannot be null");
-		}
-		if(defenseTeam == null) {
-			throw new IllegalArgumentException("Defense team cannot be null");
+		if(prosecutionTeam.hasConflict(defenseTeam) || defenseTeam.hasConflict(prosecutionTeam)) {
+			throw new IllegalArgumentException("Teams have a conflict");
 		}
 		this.prosecutionTeam = prosecutionTeam;
 		this.defenseTeam = defenseTeam;
@@ -34,10 +31,10 @@ public class Trial {
 		}
 		
 		if(judge.getConflicts().contains(defenseTeam)) {
-			throw new IllegalArgumentException("Judge has conflict with " + defenseTeam);
+			throw new IllegalArgumentException("Judge has conflict with " + defenseTeam.toString());
 		} 
 		if (judge.getConflicts().contains(prosecutionTeam)) {
-			throw new IllegalArgumentException("Judge has conflict with " + prosecutionTeam);
+			throw new IllegalArgumentException("Judge has conflict with " + prosecutionTeam.toString());
 		}
 		
 		judges.add(judge);

@@ -22,4 +22,9 @@ public class School {
 	public int getId() {
 		return this.id;
 	}
+	@Override
+	public boolean equals(Object otherSchool) {
+		if (otherSchool == null ) return false;
+		return ((School) otherSchool).getId() == id;
+	}
 }

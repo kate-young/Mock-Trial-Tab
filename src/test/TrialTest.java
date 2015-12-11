@@ -36,6 +36,36 @@ public class TrialTest {
 		this.judge3 = new Judge("judge3", "test");
 		this.trial = new Trial(prosTeam, defTeam);
 	}
+	@Test
+	public void testTeamConflictsFromPreviousTrial() {
+		setUpTrial();
+		try {
+			new Trial(prosTeam, defTeam);
+		} catch (IllegalArgumentException e) {
+			thrown.expect(IllegalArgumentException.class);
+		}
+	}
+	@Test
+	public void testTeamConflictsSameTeam() {
+		School school = new School("MU", "tigers");
+		Team team1 = new Team(1111, school);
+		Team team2 = new Team(2222, school);
+		try {
+			new Trial(team1, team2);
+		} catch (IllegalArgumentException e) {
+			thrown.expect(IllegalArgumentException.class);
+		}
+	}
+	@Test public void testTeamConflictsSameSchool() {
+		School school = new School("WashU", "Bears");
+		Team team1 = new Team(3333, school);
+		Team team2 = new Team(4444, school);
+		try {
+			new Trial(team1, team2);
+		} catch(IllegalArgumentException e) {
+			thrown.expect(IllegalArgumentException.class);
+		}
+	}
 	
 	@Test
 	public void testConflictsAddedToJudges() {
@@ -70,16 +100,18 @@ public class TrialTest {
 	public void testJudgeAssignmentWithConflict() {
 		setUpTrial();
 		trial.end();
-		Trial trial2 = new Trial(prosTeam, defTeam);
+		Team prosTeam2 = new Team(1111,school1);
+		Team defTeam2 = new Team(2222, school2);
+		Trial trial2 = new Trial(prosTeam2, defTeam2);
 		try {
 			trial.assignJudge(judge1);
-		} catch (Exception e) {
+		} catch (IllegalArgumentException e) {
 			fail("Initial Judge Assignment Failed: " + e.getMessage());
 		}
 		try {
 			trial2.assignJudge(judge1);
-		} catch(Exception e) {
-			thrown.expect(Exception.class);
+		} catch(IllegalArgumentException e) {
+			thrown.expect(IllegalArgumentException.class);
 		}
 	}
 	@Test

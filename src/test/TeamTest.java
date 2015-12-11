@@ -83,7 +83,7 @@ public class TeamTest {
 	}
 	
 	@Test
-	public void testCombineedStrengthSplit() {
+	public void testCombinedStrengthSplit() {
 		setUpTrial();
 		ballot1.score(100, 140);
 		ballot2.score(130, 110);
