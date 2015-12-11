@@ -52,6 +52,8 @@ public class Trial {
 			judge.addConflict(prosecutionTeam);
 			judge.addConflict(defenseTeam);
 		}
+		prosecutionTeam.addToTeamsHit(defenseTeam);
+		defenseTeam.addToTeamsHit(prosecutionTeam);
 		complete = true;
 	}
 	

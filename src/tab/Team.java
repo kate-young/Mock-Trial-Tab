@@ -1,11 +1,14 @@
 package tab;
 
+import java.util.ArrayList;
+
 public class Team {
 	private final School school;
 	private static int count = 0;
 	private final int id;
 	private double wins = 0;
 	private double losses = 0;
+	private ArrayList<Team> teamsHit;
 	
 	public Team(int id, School school) {
 		if(school == null) {
@@ -13,7 +16,27 @@ public class Team {
 		}
 		this.id = id;
 		this.school = school;
+		this.teamsHit = new ArrayList<Team>();
 		count++;
+	}
+	public void addToTeamsHit(Team team) {
+		if(team == null) {
+			throw new IllegalArgumentException("team cannot be null");
+		}
+		if(team == this) {
+			throw new IllegalArgumentException("team cannot hit itself");
+		}
+		teamsHit.add(team);
+	}
+	public ArrayList<Team> getTeamsHit() {
+		return teamsHit;
+	}
+	public double getCombinedStrength() {
+		double sum = 0;
+		for(Team team: teamsHit) {
+			sum += team.getWins();
+		}
+		return sum;
 	}
 	public int getId() {
 		return id;

@@ -3,15 +3,21 @@ package tab;
 import java.util.ArrayList;
 
 public class Tournament {
+	private final String name;
 	private ArrayList<School> schools;
 	private ArrayList<Team> teams;
 	private Round[] rounds;
 	
-	public Tournament() {
+	public Tournament(final String name) {
+		this.name = name;
 		this.rounds = new Round[4];
 		for(int i = 0; i < 4; i++) {
 			rounds[i] = new Round();
 		}
+	}
+
+	public String getName() {
+		return name;
 	}
 	
 	public void addSchool(School school) {
