@@ -15,10 +15,6 @@ public class Team {
 	private double losses = 0;
 	private ArrayList<Team> teamsHit;
 	
-	/**
-	 * @param id
-	 * @param school
-	 */
 	public Team(int id, School school) {
 		if(school == null) throw new IllegalArgumentException("school cannot be null");
 		this.id = id;
@@ -26,35 +22,24 @@ public class Team {
 		this.teamsHit = new ArrayList<Team>();
 		count++;
 	}
-	/**
-	 * @param team
-	 * @throws ConflictException 
-	 */
+
 	public void addToTeamsHit(Team team) throws ConflictException {
 		if(team == null) throw new IllegalArgumentException("team cannot be null");
 		if(team == this) throw new ConflictException("team cannot hit itself", team, team);
 		teamsHit.add(team);
 	}
-	/**
-	 * @param other - Team to check conflicts for
-	 * @return true if both teams are from the same school or if they have already hit
-	 */
+
 	public boolean hasConflict(Team other) {
 		return other.equals(this)
 				|| other.equals(this.getSchool()) 
 				|| other.getTeamsHit().contains(this) 
 				|| teamsHit.contains(other);
 	}
-	/**
-	 * @return list of teams that this team has already been in trial with this tournament
-	 */
+
 	public ArrayList<Team> getTeamsHit() {
 		return teamsHit;
 	}
-	/**
-	 * @return sum of the number of wins for all other teams that this team has hit. This will
-	 * be used for determining rankings at the end of the tournament.
-	 */
+
 	public double getCombinedStrength() {
 		double sum = 0;
 		for(Team team: teamsHit) {
