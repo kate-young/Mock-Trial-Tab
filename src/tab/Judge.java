@@ -1,16 +1,17 @@
 package tab;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Judge {
 	private final String firstName;
 	private final String lastName;
-	private ArrayList<Team> conflicts;
+	private List<Team> conflicts;
 	
 	public Judge(String firstName, String lastName) {
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.conflicts = new ArrayList<Team>();
+		this.conflicts = new ArrayList<>();
 	}
 	
 	public Judge(String firstName, String lastName, ArrayList<Team> conflicts) {
@@ -20,11 +21,11 @@ public class Judge {
 		this.conflicts = conflicts;
 	}
 	public void addConflict(Team conflict) {
-		if(conflict == null)  throw new IllegalArgumentException("conflict cannot be null");
+		if(conflict == null)  throw new IllegalArgumentException("Team cannot be null");
 		this.conflicts.add(conflict);
 	}
 	
-	public ArrayList<Team> getConflicts() {
+	public List<Team> getConflicts() {
 		return conflicts;
 	}
 
