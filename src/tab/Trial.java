@@ -1,20 +1,18 @@
 package tab;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Trial {
 	private final Team prosecutionTeam;
 	private final Team defenseTeam;
-	private final ArrayList<Judge> judges;
+	private final List<Judge> judges;
 	private boolean complete = false;
 	
 	public Trial(Team prosecutionTeam, Team defenseTeam) throws ConflictException {
-		if(prosecutionTeam.hasConflict(defenseTeam) || defenseTeam.hasConflict(prosecutionTeam)) {
-			throw new ConflictException("Teams have a conflict", defenseTeam, prosecutionTeam);
-		}
 		this.prosecutionTeam = prosecutionTeam;
 		this.defenseTeam = defenseTeam;
-		this.judges = new ArrayList<Judge>();
+		this.judges = new ArrayList<>();
 	}
 
 	public Team getProsecutionTeam() {
@@ -29,31 +27,26 @@ public class Trial {
 		if(judge == null) {
 			throw new IllegalArgumentException("Judge cannot be null");
 		}
-		
 		if(judge.getConflicts().contains(defenseTeam)) {
-			throw new ConflictException("judge has conflict", judge, defenseTeam);
+			throw new ConflictException("Judge has conflict with defense team");
 		} 
 		if (judge.getConflicts().contains(prosecutionTeam)) {
-			throw new ConflictException("judge has conflict", judge, prosecutionTeam);
+			throw new ConflictException("Judge has conflict with prosecution team");
 		}
 		
 		judges.add(judge);
 	}
 	
-	public ArrayList<Judge> getJudges() {
+	public List<Judge> getJudges() {
 		return judges;
 	}
 	
-	public void end() {
+	public void end() throws ConflictException {
+		prosecutionTeam.addToTeamsHit(defenseTeam);
+        defenseTeam.addToTeamsHit(prosecutionTeam);
 		for(Judge judge : judges) {
 			judge.addConflict(prosecutionTeam);
 			judge.addConflict(defenseTeam);
-		}
-		try {
-			prosecutionTeam.addToTeamsHit(defenseTeam);
-			defenseTeam.addToTeamsHit(prosecutionTeam);
-		} catch (ConflictException e) {
-			e.printStackTrace();
 		}
 		complete = true;
 	}
