@@ -52,4 +52,11 @@ public class TournamentTest {
         thrown.expectMessage("Team cannot be null");
         tournament.addTeam(null);
     }
+
+    @Test
+    public void twoTournamentsAreEqual() {
+        Tournament other = new Tournament("name", 2015);
+
+        assertTrue(tournament.equals(other));
+    }
 }

@@ -26,6 +26,10 @@ public class Tournament implements Serializable {
 		return name;
 	}
 
+	public int getYear() {
+		return year;
+	}
+
 	public void addSchool(School school) {
 		if(school == null) throw new IllegalArgumentException("School cannot be null");
 		schools.add(school);
@@ -45,5 +49,11 @@ public class Tournament implements Serializable {
 	}
 	public Round getRound(int index) {
 		return rounds[index];
+	}
+
+	public boolean equals(Object obj) {
+		Tournament other = (Tournament) obj;
+
+		return other.getName() == name && other.getYear() == year;
 	}
 }
