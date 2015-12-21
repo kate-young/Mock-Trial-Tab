@@ -27,4 +27,11 @@ public class School {
 	public int getId() {
 		return this.id;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		School otherSchool = (School) obj;
+
+		return this.name == otherSchool.getName();
+	}
 }

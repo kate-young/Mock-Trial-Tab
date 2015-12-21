@@ -14,4 +14,11 @@ public class SchoolTest {
         assertEquals(1, school1.getId());
         assertEquals(2, school2.getId());
     }
+
+    @Test
+    public void twoSchoolsAreEqual() throws Exception {
+        School school = new School("UMKC", "no mascot");
+
+        assertTrue(school1.equals(school));
+    }
 }
