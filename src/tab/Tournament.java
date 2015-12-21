@@ -1,16 +1,19 @@
 package tab;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tournament {
+public class Tournament implements Serializable {
 	private final String name;
 	private List<School> schools;
 	private List<Team> teams;
 	private Round[] rounds;
+	private int year;
 	
-	public Tournament(final String name) {
+	public Tournament(final String name, final int year) {
 		this.name = name;
+		this.year = year;
 		this.rounds = new Round[4];
 		this.schools = new ArrayList<>();
 		this.teams = new ArrayList<>();
@@ -22,16 +25,16 @@ public class Tournament {
 	public String getName() {
 		return name;
 	}
-	
+
 	public void addSchool(School school) {
-		if(school == null) throw new IllegalArgumentException("school cannot be null");
+		if(school == null) throw new IllegalArgumentException("School cannot be null");
 		schools.add(school);
 	}
 	public List<School> getSchools() {
 		return schools;
 	}
 	public void addTeam(Team team) {
-		if(team == null) throw new IllegalArgumentException("team cannot be null");
+		if(team == null) throw new IllegalArgumentException("Team cannot be null");
 		teams.add(team);
 	} 
 	public List<Team> getTeams() {

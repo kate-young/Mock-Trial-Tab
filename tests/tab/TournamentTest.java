@@ -9,9 +9,6 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.mockingDetails;
 
-/**
- * Created by kate on 12/20/15.
- */
 public class TournamentTest {
 
     private Tournament tournament;
@@ -21,7 +18,7 @@ public class TournamentTest {
 
     @Before
     public void setUp() throws Exception {
-       tournament = new Tournament("name");
+       tournament = new Tournament("name", 2015);
     }
 
     @Test
