@@ -1,42 +1,59 @@
 package tab;
 
+import java.awt.event.TextEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Teams attending a tournament. Tracks the number of wins, losses, and other teams hit
  * at a tournament.
  *
  */
-public class Team {
+public class Team implements Comparable {
 	private final School school;
 	private static int count = 0;
 	private final int id;
 	private double wins = 0;
 	private double losses = 0;
-	private ArrayList<Team> teamsHit;
+	private List<Team> teamsHit;
 	
 	public Team(int id, School school) {
 		if(school == null) throw new IllegalArgumentException("school cannot be null");
 		this.id = id;
 		this.school = school;
-		this.teamsHit = new ArrayList<Team>();
+		this.teamsHit = new ArrayList<>();
 		count++;
 	}
 
-	public void addToTeamsHit(Team team) throws ConflictException {
-		if(team == null) throw new IllegalArgumentException("team cannot be null");
-		if(team == this) throw new ConflictException("team cannot hit itself", team, team);
+	@Override
+	public int compareTo(Object obj) {
+		Team other = (Team) obj;
+		if(wins > other.getWins() || (wins == other.getWins() && getCombinedStrength() > other.getCombinedStrength())) {
+			return 1;
+		}
+		if (wins < ((Team) obj).getWins() || (wins == other.getWins() && getCombinedStrength() < other.getCombinedStrength())){
+			return -1;
+		}
+		return 0;
+	}
+
+	protected void addToTeamsHit(Team team) throws ConflictException {
+		if(team == null)  {
+			throw new IllegalArgumentException("Team cannot be null");
+		}
+		if(this == team) {
+			throw new ConflictException("Team cannot hit itself");
+		}
+		if(this.school == team.getSchool()) {
+			throw new ConflictException("Team cannot hit team from its own school");
+		}
+		if(teamsHit.contains(team)) {
+			throw new ConflictException("Team has already hit this team");
+		}
 		teamsHit.add(team);
 	}
 
-	public boolean hasConflict(Team other) {
-		return other.equals(this)
-				|| other.equals(this.getSchool()) 
-				|| other.getTeamsHit().contains(this) 
-				|| teamsHit.contains(other);
-	}
-
-	public ArrayList<Team> getTeamsHit() {
+	protected List<Team> getTeamsHit() {
 		return teamsHit;
 	}
 
@@ -62,13 +79,13 @@ public class Team {
 	public double getLosses() {
 		return losses;
 	}
-	public void win() {
+	protected void win() {
 		wins += 1;
 	}
-	public void lose() {
+	protected void lose() {
 		losses += 1;
 	}
-	public void tie() {
+	protected void tie() {
 		wins += 0.5;
 		losses += 0.5;
 	}
