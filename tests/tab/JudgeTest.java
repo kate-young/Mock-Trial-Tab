@@ -39,4 +39,11 @@ public class JudgeTest {
 
         judge.addConflict(null);
     }
+
+    @Test
+    public void twoJudgesAreEqual() throws Exception {
+        Judge judge2 = new Judge("judge", "brown");
+
+        assertTrue(judge.equals(judge2));
+    }
 }
