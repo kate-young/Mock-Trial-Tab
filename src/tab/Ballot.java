@@ -27,8 +27,8 @@ public class Ballot {
 	public void score(int prosecutionScore, int defenseScore) {
 		this.defenseScore = defenseScore;
 		this.prosecutionScore = prosecutionScore;
-		Team defense = this.trial.getDefenseTeam();
-		Team prosecution = this.trial.getProsecutionTeam();
+		TeamTournamentInstance defense = this.trial.getDefenseTeam();
+		TeamTournamentInstance prosecution = this.trial.getProsecutionTeam();
 		if(prosecutionScore == ALL_LOSS_SCORE && defenseScore == ALL_LOSS_SCORE) {
 			prosecution.lose();
 			defense.lose();

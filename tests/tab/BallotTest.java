@@ -11,8 +11,8 @@ public class BallotTest {
 
     private School school1 = mock(School.class);
     private School school2 = mock(School.class);
-    private Team prosTeam;
-    private Team defTeam;
+    private TeamTournamentInstance prosTeam;
+    private TeamTournamentInstance defTeam;
     private Trial trial;
     private ScoringJudge judge;
     private Ballot ballot;
@@ -20,8 +20,8 @@ public class BallotTest {
     @Before
     public void setUp() throws Exception {
        judge = mock(ScoringJudge.class);
-       prosTeam = new Team(1900, school1);
-       defTeam = new Team(2000, school2);
+       prosTeam = new TeamTournamentInstance(new Team(1900, school1));
+       defTeam = new TeamTournamentInstance(new Team(2000, school2));
        trial = new Trial(prosTeam, defTeam);
        ballot = new Ballot(judge, trial);
     }
@@ -31,7 +31,7 @@ public class BallotTest {
         ballot.score(120, 110);
 
         assertEquals("prosecution wins incremented", 1, prosTeam.getWins(), .001);
-        assertEquals("proseuction losses remain", 0, prosTeam.getLosses(), .001);
+        assertEquals("prosecution losses remain", 0, prosTeam.getLosses(), .001);
         assertEquals("defense losses incremented", 1, defTeam.getLosses(), .001);
         assertEquals("defense wins remain", 0, defTeam.getWins(), .001);
     }

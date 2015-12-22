@@ -38,10 +38,10 @@ public class RoundTest {
 
     @Test
     public void roundCompletedWhenAllTrialsAreComplete() throws Exception {
-        Team team1 = mock(Team.class);
-        Team team2 = mock(Team.class);
-        Team team3 = mock(Team.class);
-        Team team4 = mock(Team.class);
+        TeamTournamentInstance team1 = mock(TeamTournamentInstance.class);
+        TeamTournamentInstance team2 = mock(TeamTournamentInstance.class);
+        TeamTournamentInstance team3 = mock(TeamTournamentInstance.class);
+        TeamTournamentInstance team4 = mock(TeamTournamentInstance.class);
 
         Trial trial1 = new Trial(team1,team2);
         Trial trial2 = new Trial(team3,team4);
@@ -57,10 +57,10 @@ public class RoundTest {
 
     @Test
     public void roundIncompletedWhenNotAllTrialsAreComplete() throws Exception {
-        Team team1 = mock(Team.class);
-        Team team2 = mock(Team.class);
-        Team team3 = mock(Team.class);
-        Team team4 = mock(Team.class);
+        TeamTournamentInstance team1 = mock(TeamTournamentInstance.class);
+        TeamTournamentInstance team2 = mock(TeamTournamentInstance.class);
+        TeamTournamentInstance team3 = mock(TeamTournamentInstance.class);
+        TeamTournamentInstance team4 = mock(TeamTournamentInstance.class);
 
         Trial trial1 = new Trial(team1,team2);
         Trial trial2 = new Trial(team3,team4);

@@ -12,11 +12,11 @@ import static org.mockito.Mockito.*;
  * Created by kate on 12/19/15.
  */
 public class TrialTest {
-    Judge judge;
+    JudgeTournamentInstance judge;
     School school1;
     School school2;
-    Team prosTeam;
-    Team defTeam;
+    TeamTournamentInstance prosTeam;
+    TeamTournamentInstance defTeam;
     Trial trial;
 
     @Rule
@@ -24,11 +24,11 @@ public class TrialTest {
 
     @Before
     public void setUp() throws Exception {
-        judge = new Judge("first", "last");
+        judge = new JudgeTournamentInstance(mock(Judge.class));
         school1 = mock(School.class);
         school2 = mock(School.class);
-        prosTeam = new Team(1111, school1);
-        defTeam = new Team(1234, school2);
+        prosTeam = new TeamTournamentInstance(new Team(1111, school1));
+        defTeam = new TeamTournamentInstance(new Team(1234, school2));
         trial = new Trial(prosTeam, defTeam);
     }
 
@@ -65,7 +65,7 @@ public class TrialTest {
 
     @Test
     public void judgeCannotBeAssignedIfTheyHaveAConflictWithProsecution() throws Exception {
-        judge.addConflict(prosTeam);
+        //judge.addConflict(prosTeam);
 
         thrown.expect(ConflictException.class);
         thrown.expectMessage("Judge has conflict with prosecution team");
