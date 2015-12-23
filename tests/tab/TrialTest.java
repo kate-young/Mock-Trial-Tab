@@ -24,7 +24,7 @@ public class TrialTest {
 
     @Before
     public void setUp() throws Exception {
-        judge = new JudgeTournamentInstance(mock(Judge.class));
+        judge = new JudgeTournamentInstance(new Judge("judge", "brown"));
         school1 = mock(School.class);
         school2 = mock(School.class);
         prosTeam = new TeamTournamentInstance(new Team(1111, school1));
@@ -44,8 +44,8 @@ public class TrialTest {
         trial.assignJudge(judge);
         trial.end();
 
-        assertTrue("prosecution team added to judge's conflicts", judge.getConflicts().contains(prosTeam));
-        assertTrue("defense team added to judge's conflicts", judge.getConflicts().contains(defTeam));
+        assertTrue("prosecution team added to judge's conflicts", judge.getConflicts().contains(prosTeam.getTeam()));
+        assertTrue("defense team added to judge's conflicts", judge.getConflicts().contains(defTeam.getTeam()));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class TrialTest {
 
     @Test
     public void judgeCannotBeAssignedIfTheyHaveAConflictWithProsecution() throws Exception {
-        //judge.addConflict(prosTeam);
+        judge.addConflict(prosTeam.getTeam());
 
         thrown.expect(ConflictException.class);
         thrown.expectMessage("Judge has conflict with prosecution team");

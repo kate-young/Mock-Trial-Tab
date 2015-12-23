@@ -1,5 +1,6 @@
 package tab;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class JudgeTournamentInstance {
@@ -8,12 +9,13 @@ public class JudgeTournamentInstance {
 
     public JudgeTournamentInstance(Judge judge) {
         this.judge = judge;
+        conflicts = new ArrayList<>();
     }
 
     public void addConflict(Team conflict) {
 		if(conflict == null)  throw new IllegalArgumentException("Team cannot be null");
-		this.conflicts.add(conflict);
-	}
+        conflicts.add(conflict);
+    }
 
     public List<Team> getConflicts() {
 		return conflicts;

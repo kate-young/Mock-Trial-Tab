@@ -11,8 +11,7 @@ public class SchoolTest {
 
     @Test
     public void idIsAutoIncremented() throws Exception {
-        assertEquals(1, school1.getId());
-        assertEquals(2, school2.getId());
+        assertEquals(school1.getId() + 1, school2.getId());
     }
 
     @Test

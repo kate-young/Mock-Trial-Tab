@@ -33,7 +33,6 @@ public class Trial {
 		if (judge.getConflicts().contains(prosecutionTeam.getTeam())) {
 			throw new ConflictException("Judge has conflict with prosecution team");
 		}
-		
 		judges.add(judge);
 	}
 	
@@ -45,8 +44,8 @@ public class Trial {
 		prosecutionTeam.addToTeamsHit(defenseTeam);
         defenseTeam.addToTeamsHit(prosecutionTeam);
 		for(JudgeTournamentInstance judge : judges) {
-			//judge.addConflict(prosecutionTeam);
-			//judge.addConflict(defenseTeam);
+			judge.addConflict(prosecutionTeam.getTeam());
+			judge.addConflict(defenseTeam.getTeam());
 		}
 		complete = true;
 	}
