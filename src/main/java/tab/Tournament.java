@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tournament implements Serializable {
+
 	private final String name;
 	private List<School> schools;
 	private List<Team> teams;

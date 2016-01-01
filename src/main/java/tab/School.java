@@ -1,17 +1,22 @@
 package tab;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class School {
-	private static int count = 0;
+	@Id
+	@GeneratedValue
+	private Integer id;
 	private String name;
 	private String mascot;
-	private final int id;
 
-	public School() {
-		this.id = ++count;
-	}
+	public School() { }
 
 	public School(String name, String mascot) {
-		this.id = ++count;
 		this.name = name;
 		this.mascot = mascot;
 	}
@@ -24,8 +29,7 @@ public class School {
 		return mascot;
 	}
 
-	public int getId() {
-		return this.id;
+	public void save() {
 	}
 
 	@Override
