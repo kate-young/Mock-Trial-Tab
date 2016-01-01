@@ -10,11 +10,6 @@ public class SchoolTest {
     School school2 = new School("KU", "jayhawk");
 
     @Test
-    public void idIsAutoIncremented() throws Exception {
-        assertEquals(school1.getId() + 1, school2.getId());
-    }
-
-    @Test
     public void twoSchoolsAreEqual() throws Exception {
         School school = new School("UMKC", "no mascot");
 

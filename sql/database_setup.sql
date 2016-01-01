@@ -8,4 +8,6 @@ use mock_trial;
 //Schools
 create table schools (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY
                      ,name VARCHAR(255) NOT NULL
-                     ,mascot VARCHAR(255) NULL);
+                     ,mascot VARCHAR(255) NULL
+                     ,created_dt_tm TIMESTAMP NOT NULL
+                     ,updated_dt_tm TIMESTAMP NOT NULL);
