@@ -5,6 +5,7 @@ Program to determine pairings and tournament results for Undergraduate Mock Tria
 * Mockito
 * Hibernate
 * MySQL
+* Spring
 
 ## Database
 This project uses mysql. SQL script to set up the database is located in the sql directory.
