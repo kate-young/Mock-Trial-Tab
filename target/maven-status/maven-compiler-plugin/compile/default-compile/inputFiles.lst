@@ -1,0 +1,17 @@
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/model/Round.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/model/Team.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/controllers/SchoolController.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/model/ScoringJudge.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/model/TeamTournamentInstance.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/services/impl/SchoolServiceImpl.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/Application.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/dao/impl/SchoolDaoImpl.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/model/Trial.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/model/Tournament.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/model/ConflictException.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/model/Ballot.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/dao/ISchoolDao.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/model/School.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/model/Judge.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/model/JudgeTournamentInstance.java
+/home/kate/IdeaProjects/Mock-Trial-Tab/src/main/java/tab/services/ISchoolService.java

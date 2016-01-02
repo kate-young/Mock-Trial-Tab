@@ -1,0 +1,17 @@
+tab/model/JudgeTournamentInstance.class
+tab/dao/impl/SchoolDaoImpl.class
+tab/model/Team.class
+tab/model/ScoringJudge.class
+tab/model/Judge.class
+tab/model/Tournament.class
+tab/dao/ISchoolDao.class
+tab/Application.class
+tab/model/Ballot.class
+tab/model/School.class
+tab/model/ConflictException.class
+tab/model/Trial.class
+tab/model/TeamTournamentInstance.class
+tab/services/impl/SchoolServiceImpl.class
+tab/model/Round.class
+tab/controllers/SchoolController.class
+tab/services/ISchoolService.class
