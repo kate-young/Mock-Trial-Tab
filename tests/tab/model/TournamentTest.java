@@ -1,4 +1,4 @@
-package tab;
+package tab.model;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -7,7 +7,6 @@ import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.mockingDetails;
 
 public class TournamentTest {
 

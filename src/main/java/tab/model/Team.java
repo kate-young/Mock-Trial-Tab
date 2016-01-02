@@ -1,4 +1,4 @@
-package tab;
+package tab.model;
 
 public class Team {
 	private final School school;

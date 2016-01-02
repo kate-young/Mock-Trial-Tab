@@ -1,9 +1,13 @@
-package tab;
+package tab.model;
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import tab.model.ConflictException;
+import tab.model.School;
+import tab.model.Team;
+import tab.model.TeamTournamentInstance;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;

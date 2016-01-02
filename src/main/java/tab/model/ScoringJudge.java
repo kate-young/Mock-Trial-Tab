@@ -1,4 +1,4 @@
-package tab;
+package tab.model;
 
 import java.util.ArrayList;
 

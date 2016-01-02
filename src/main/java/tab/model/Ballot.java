@@ -1,4 +1,4 @@
-package tab;
+package tab.model;
 
 public class Ballot {
 	private final ScoringJudge judge;

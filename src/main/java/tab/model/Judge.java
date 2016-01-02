@@ -1,7 +1,6 @@
-package tab;
+package tab.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Judge {
 	private String firstName;

@@ -1,6 +1,7 @@
-package tab;
+package tab.model;
 
 import org.junit.Test;
+import tab.model.School;
 
 import static org.junit.Assert.*;
 
