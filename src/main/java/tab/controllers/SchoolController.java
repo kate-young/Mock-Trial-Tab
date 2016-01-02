@@ -5,9 +5,6 @@ import org.springframework.web.bind.annotation.*;
 import tab.model.School;
 import tab.services.ISchoolService;
 
-/**
- * Created by kate on 1/1/16.
- */
 public class SchoolController {
     @Autowired
     ISchoolService schoolService;
